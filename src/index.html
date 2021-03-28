@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather App</title>
+    <meta charset="UTF-8" />
+    <link href="src/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div container="Class">
+        <form type="text" id="search">
+            <input type="search" placeholder="Search your city.." autofocus="on" autocomplete="off" id="city-input" />
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button class="btn btn-primary" id="current" type="submit">Current</button>
+        </form>
+
+        <h1 id="city">
+            <strong>
+                Your City
+            </strong>
+        </h1>
+        <h3>Today</h3>
+
+        <span class="temperature" id="temperature">
+            Your Temperature
+        </span>
+        <span class="units">°C</span>
+        <li id="description"></li>
+        <li>Humidity: <span id="humidity"></span>%</li>
+        <li>Wind: <span id="wind"></span> km/h</li>
+
+
+        <img=src="images/Sunday.gif" alt="Sunny" id="today">
+
+        <p>
+        <div class="row">
+
+            <div class="col-sm">
+                Tomorrow
+                <img=src="images/Sunday.gif" alt="Sunny">
+                61℉
+            </div>
+
+            <div class="col-sm">
+                Mon
+                <img=src="images/Monday.gif" alt="Partly cloudy">
+                55℉
+            </div>
+
+            <div class="col-sm">
+                Tue
+                <img=src="images/Tuesday.gif" alt="Rain">
+                35℉
+            </div>
+
+            <div class="col-sm">
+                Wed
+                <img=src="images/Wednesday.gif" alt="Showers">
+                36℉
+            </div>
+
+            <div class="col-sm">
+                Thu
+                <img=src="images/Thursday.gif" alt="Thunderstorms">
+                28℉
+            </div>
+
+            <div class="col-sm">
+                Fri
+                <img=src="images/Friday.gif" alt="Rainbow">
+                40℉
+            </div>
+
+
+        </div>
+        <script src="src/index.js"></script>
+</body>
+
+</html>
