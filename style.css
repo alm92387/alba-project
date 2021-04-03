@@ -88,6 +88,7 @@ li {
   font-size: 25px;
   padding-bottom: 25px;
 }
+
 .hosting {
-  margin-left: 41.35em;
+  display: inline;
 }
