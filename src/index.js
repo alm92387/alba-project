@@ -10,10 +10,9 @@ let h3 = document.querySelector("h3");
 h3.innerHTML = dayTime; 
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = document.querySelector("#temperature");
   document.querySelector("#city").innerHTML = response.data.name; 
   document.querySelector("#temperature").innerHTML = `${temperature}`; 
-  
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
@@ -26,6 +25,9 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  celciusTemperature = Math.round(response.data.main.temp)
+  temperature.innerHTML = Math.round (celciusTemperature)
+
 }
 
 
@@ -58,7 +60,28 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+function showFahrenheitTemperature (event) {
+  event.preventDefault ();
+  let temperatureElement = document.querySelector ("#temperature"); 
+  let farenheightTemperature = (celciusTemperature * 9) /5 + 32; 
+  temperatureElement.innerHTML = Math.round(farenheightTemperature);
+}
+
+function showCelciusTemperature (event) {
+  event.preventDefault ();
+  let temperatureElement = document.querySelector ("#temperature"); 
+  temperatureElement.innerHTML = celciusTemperature;
+}
+
 let currentLocationButton = document.querySelector("#current");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
+let celciusTemperature = null;
+
 searchCity (city);
+
+let fahrenheitLink = document.querySelector ("#far");
+fahrenheitLink.addEventListener ("click", showFahrenheitTemperature);
+
+let celciusLink = document.querySelector ("#cel");
+celciusLink.addEventListener ("click", showCelciusTemperature);
