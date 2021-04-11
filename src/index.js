@@ -9,6 +9,19 @@ let dayTime = [`${day}, ${hours}:${minutes}:${seconds}`]
 let h3 = document.querySelector("h3");
 h3.innerHTML = dayTime; 
 
+function searchCity(city) {
+  let apiKey = "74c14200946b4fbc59b8a95c822aab0e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+function getForecast(coordinates){
+let apiKey = "74c14200946b4fbc59b8a95c822aab0e";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(showForecast);
+console.log (apiUrl)
+}
+
 function showTemperature(response) {
   let temperature = document.querySelector("#temperature");
   document.querySelector("#city").innerHTML = response.data.name; 
@@ -28,9 +41,11 @@ function showTemperature(response) {
   celciusTemperature = Math.round(response.data.main.temp)
   temperature.innerHTML = Math.round (celciusTemperature)
 
-}
-function showForecast(){
+  getForecast (response.data.coord);
 
+
+}
+function showForecast(response){
   let forecastElement = document.querySelector ("#forecast"); 
   let forcastHTML = `<div class="row">`;
   let days = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -53,11 +68,7 @@ function showForecast(){
 }
 
 
-function searchCity(city) {
-  let apiKey = "74c14200946b4fbc59b8a95c822aab0e";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemperature);
-}
+
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -109,4 +120,3 @@ let celciusLink = document.querySelector ("#cel");
 celciusLink.addEventListener ("click", showCelciusTemperature);
 
 searchCity (city);
-showForecast();
