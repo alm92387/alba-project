@@ -5,7 +5,6 @@ body {
   padding: 15px;
   border: solid #046ffc;
   font-family: "Playfair Display", serif;
-  color: #046ffc;
 }
 
 .btn-primary {
@@ -51,9 +50,7 @@ body {
   font-family: "Playfair Display", serif;
   color: #046ffc;
 }
-.container {
-  background-color: #64a3f7;
-}
+
 .btn-primary {
   display: inline;
   border-radius: 80px;
@@ -98,4 +95,16 @@ li {
 }
 .weather-forecast-day {
   display: block;
+}
+#cel {
+  text-decoration: none;
+}
+#cel:hover {
+  text-decoration: underline;
+}
+#far {
+  text-decoration: none;
+}
+#far:hover {
+  text-decoration: underline;
 }

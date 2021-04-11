@@ -29,6 +29,28 @@ function showTemperature(response) {
   temperature.innerHTML = Math.round (celciusTemperature)
 
 }
+function showForecast(){
+
+  let forecastElement = document.querySelector ("#forecast"); 
+  let forcastHTML = `<div class="row">`;
+  let days = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  days.forEach (function (day) { 
+  forcastHTML = forcastHTML + ` 
+        <div class="col-2">
+        <div class= "weather-forecast-day"> ${day}
+                </div>
+            <img src = "http://openweathermap.org/img/wn/10d@2x.png" alt="Rain"/>   
+            <div class = "weather-forecast-temperature">
+                <span class = "forecast-temperature-max">18° </span>
+                <span class="forecast-temperature-min">12° </span>
+            </div>
+            </div>
+            `;
+            });
+            forcastHTML = forcastHTML + `</div>`;
+            forecastElement.innerHTML = forcastHTML;
+
+}
 
 
 function searchCity(city) {
@@ -78,10 +100,13 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 let celciusTemperature = null;
 
-searchCity (city);
+
 
 let fahrenheitLink = document.querySelector ("#far");
 fahrenheitLink.addEventListener ("click", showFahrenheitTemperature);
 
 let celciusLink = document.querySelector ("#cel");
 celciusLink.addEventListener ("click", showCelciusTemperature);
+
+searchCity (city);
+showForecast();
