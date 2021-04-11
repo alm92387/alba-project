@@ -92,3 +92,10 @@ li {
 .hosting {
   display: inline;
 }
+.weather-forcast {
+  margin-top: 20px;
+  text-align: center;
+}
+.weather-forecast-day {
+  display: block;
+}
