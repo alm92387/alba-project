@@ -108,3 +108,10 @@ li {
 #far:hover {
   text-decoration: underline;
 }
+.forecast-temperature-max {
+  font-weight: bold;
+}
+.forecast-temperature-min {
+  font-weight: lighter;
+  display: block;
+}

@@ -9,18 +9,21 @@ let dayTime = [`${day}, ${hours}:${minutes}:${seconds}`]
 let h3 = document.querySelector("h3");
 h3.innerHTML = dayTime; 
 
+function formatDay (timestamp) {
+  let date = new Date (timestamp *1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+
+}
 function searchCity(city) {
   let apiKey = "74c14200946b4fbc59b8a95c822aab0e";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
-function getForecast(coordinates){
-let apiKey = "74c14200946b4fbc59b8a95c822aab0e";
-let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(showForecast);
-console.log (apiUrl)
-}
+
 
 function showTemperature(response) {
   let temperature = document.querySelector("#temperature");
@@ -46,28 +49,31 @@ function showTemperature(response) {
 
 }
 function showForecast(response){
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector ("#forecast"); 
-  let forcastHTML = `<div class="row">`;
-  let days = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-  days.forEach (function (day) { 
-  forcastHTML = forcastHTML + ` 
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach (function (forecastDay, index) { 
+  forecastHTML = forecastHTML + ` 
         <div class="col-2">
-        <div class= "weather-forecast-day"> ${day}
+        <div class= "weather-forecast-date"> ${formatDay (forecastDay.dt)}
                 </div>
-            <img src = "http://openweathermap.org/img/wn/10d@2x.png" alt="Rain"/>   
+            <img src = "http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="Rain"/>   
             <div class = "weather-forecast-temperature">
-                <span class = "forecast-temperature-max">18° </span>
-                <span class="forecast-temperature-min">12° </span>
+                <span class = "forecast-temperature-max">${Math.round(forecastDay.temp.max)}° </span>
+                <span class="forecast-temperature-min">${Math.round(forecastDay.temp.min)}° </span>
             </div>
             </div>
             `;
             });
-            forcastHTML = forcastHTML + `</div>`;
-            forecastElement.innerHTML = forcastHTML;
-
+            forecastHTML = forecastHTML + `</div>`;
+            forecastElement.innerHTML = forecastHTML;
 }
 
-
+function getForecast(coordinates){
+let apiKey = "74c14200946b4fbc59b8a95c822aab0e";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(showForecast);
+}
 
 
 function handleSubmit(event) {
