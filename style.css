@@ -2,7 +2,7 @@ body {
   text-decoration: none;
   display: block;
   margin: 15px 300px 300px;
-  padding: 15px;
+  padding: 0;
   border: solid #046ffc;
   font-family: "Playfair Display", serif;
 }
@@ -30,7 +30,9 @@ li {
   display: block;
   margin: 0 auto;
   text-decoration: none;
-  background: #8ebbf5;
+  background: #a8c9f3;
+  padding: 15px 20px 15px 50px;
+  color: #046ffc;
 }
 #today {
   display: block;
@@ -46,15 +48,6 @@ li {
   line-height: 0.5px;
   font-size: 25px;
   padding-bottom: 25px;
-}
-body {
-  text-decoration: none;
-  display: block;
-  margin: 15px 300px 300px;
-  padding: 15px;
-  border: solid #046ffc;
-  font-family: "Playfair Display", serif;
-  color: #046ffc;
 }
 
 .btn-primary {
