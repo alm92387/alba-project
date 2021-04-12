@@ -26,6 +26,12 @@ img {
 li {
   list-style-type: none;
 }
+.container {
+  display: block;
+  margin: 0 auto;
+  text-decoration: none;
+  background: #8ebbf5;
+}
 #today {
   display: block;
   padding-bottom: 9px;
@@ -110,8 +116,14 @@ li {
 }
 .forecast-temperature-max {
   font-weight: bold;
+  font-size: larger;
+  display: inline;
 }
 .forecast-temperature-min {
   font-weight: lighter;
-  display: block;
+  display: inline;
+}
+.weather-forecast-day {
+  text-decoration: none;
+  padding-top: 40px;
 }
