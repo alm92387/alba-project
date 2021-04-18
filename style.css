@@ -34,6 +34,10 @@ li {
   padding: 15px 20px 15px 50px;
   color: #046ffc;
 }
+.button-image #current {
+  width: fit-content;
+}
+
 #today {
   display: block;
   padding-bottom: 9px;
@@ -94,12 +98,6 @@ li {
 }
 .weather-forecast-day {
   display: block;
-}
-#cel {
-  text-decoration: none;
-}
-#cel:hover {
-  text-decoration: underline;
 }
 #far {
   text-decoration: none;
