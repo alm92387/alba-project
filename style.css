@@ -3,7 +3,6 @@ body {
   display: block;
   margin: 15px 300px 300px;
   padding: 0;
-  border: solid #046ffc;
   font-family: "Playfair Display", serif;
 }
 
@@ -30,9 +29,12 @@ li {
   display: block;
   margin: 0 auto;
   text-decoration: none;
-  background: #a8c9f3;
+}
+.weather-app {
   padding: 15px 20px 15px 50px;
+  background: #a8c9f3;
   color: #046ffc;
+  border: solid #046ffc;
 }
 .button-image #current {
   width: fit-content;

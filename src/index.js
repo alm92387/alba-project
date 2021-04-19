@@ -23,8 +23,6 @@ function searchCity(city) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-
-
 function showTemperature(response) {
   let temperature = document.querySelector("#temperature");
   document.querySelector("#city").innerHTML = response.data.name; 
@@ -41,8 +39,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  celciusTemperature = Math.round(response.data.main.temp)
-  temperature.innerHTML = Math.round (celciusTemperature)
+  farenheightTemperature = Math.round(response.data.main.temp);
+  temperature.innerHTML = Math.round (farenheightTemperature);
 
   getForecast (response.data.coord);
 
@@ -101,24 +99,17 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-
-
-function showCelciusTemperature (event) {
-  event.preventDefault ();
-  let temperatureElement = document.querySelector ("#temperature"); 
-  temperatureElement.innerHTML = celciusTemperature;
+function showFarenheightTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = farenheightTemperature;
 }
 
 let currentLocationButton = document.querySelector("#current");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-
-
-
-
 let fahrenheitLink = document.querySelector ("#far");
 fahrenheitLink.addEventListener ("click", showFahrenheitTemperature);
 
 
-
-searchCity (city);
+searchCity ("Paris");
